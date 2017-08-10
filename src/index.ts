@@ -10,7 +10,7 @@ export namespace MonoMongo {
 export let db: Db
 export const oid = (id) => new ObjectID(id)
 
-export default async function() {
+export default async function () {
 	const log = this.log.module('mono-mongodb')
 	const mongodb: MonoMongo.Options = this.conf.mongodb
 	if (!mongodb) return log.error('No mongodb configuration found')

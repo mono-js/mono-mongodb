@@ -2,16 +2,22 @@
   "name": "@terrajs/mono-mongodb",
   "version": "1.0.0",
   "description": "MongoDb module for Mono",
+  "main": "dist/src/",
+  "types": "dist/src/index.d.ts",
+  "files": [
+    "dist/src"
+  ],
+  "scripts": {
+    "build": "rimraf dist/ && tsc",
+    "lint": "tslint src/*.ts",
+    "test": "npm run lint && npm run build && nyc --reporter=lcov ava --verbose --serial dist/test/",
+    "preversion": "npm test",
+    "prepublish": "npm run build"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/terrajs/mono-mongodb.git"
   },
-  "keywords": [
-    "mongodb",
-    "mono",
-    "mono-mongodb",
-    "mongo"
-  ],
   "contributors": [
     {
       "name": "Sebastien Chopin (@Atinux)"
@@ -21,12 +27,23 @@
     }
   ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/terrajs/mono-mongodb/issues"
-  },
-  "homepage": "https://github.com/terrajs/mono-mongodb#readme",
   "dependencies": {
     "@types/mongodb": "^2.2.9",
     "mongodb": "^2.2.31"
-  }
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.20",
+    "ava": "^0.21.0",
+    "nyc": "^11.1.0",
+    "rimraf": "^2.6.1",
+    "std-mocks": "^1.0.1",
+    "tslint": "^5.6.0",
+    "typescript": "^2.4.2"
+  },
+  "keywords": [
+    "mongodb",
+    "mono",
+    "mono-mongodb",
+    "mongo"
+  ]
 }
