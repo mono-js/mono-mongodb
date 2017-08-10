@@ -5,6 +5,7 @@ MongoDB module for [Mono](https://github.com/terrajs/mono).
 [![npm version](https://img.shields.io/npm/v/@terrajs/mono-mongodb.svg)](https://www.npmjs.com/package/@terrajs/mono-mongodb)
 [![Travis](https://img.shields.io/travis/terrajs/mono-mongodb/master.svg)](https://travis-ci.org/terrajs/mono-mongodb)
 [![Coverage](https://img.shields.io/codecov/c/github/terrajs/mono-mongodb/master.svg)](https://codecov.io/gh/terrajs/mono-mongodb.js)
+[![license](https://img.shields.io/github/license/terrajs/mono-mongodb.svg)](https://github.com/terrajs/mono-mongodb/blob/master/LICENSE)
 
 ## Installation
 
