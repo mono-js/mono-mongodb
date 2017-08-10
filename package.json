@@ -10,7 +10,8 @@
   "scripts": {
     "build": "rimraf dist/ && tsc",
     "lint": "tslint src/*.ts",
-    "test": "npm run lint && npm run build && nyc --reporter=lcov ava --verbose --serial dist/test/",
+    "test": "npm run lint && npm run build && nyc ava --verbose --serial dist/test/ && nyc report --reporter=html",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "preversion": "npm test",
     "prepublish": "npm run build"
   },
@@ -34,6 +35,7 @@
   "devDependencies": {
     "@types/node": "^8.0.20",
     "ava": "^0.21.0",
+    "codecov": "^2.3.0",
     "nyc": "^11.1.0",
     "rimraf": "^2.6.1",
     "std-mocks": "^1.0.1",
