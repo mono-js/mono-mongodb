@@ -1,0 +1,32 @@
+{
+  "name": "@terrajs/mono-mongodb",
+  "version": "1.0.0",
+  "description": "MongoDb module for Mono",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/terrajs/mono-mongodb.git"
+  },
+  "keywords": [
+    "mongodb",
+    "mono",
+    "mono-mongodb",
+    "mongo"
+  ],
+  "contributors": [
+    {
+      "name": "Sebastien Chopin (@Atinux)"
+    },
+    {
+      "name": "Benjamin Canac (@benjamincanac)"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/terrajs/mono-mongodb/issues"
+  },
+  "homepage": "https://github.com/terrajs/mono-mongodb#readme",
+  "dependencies": {
+    "@types/mongodb": "^2.2.9",
+    "mongodb": "^2.2.31"
+  }
+}
