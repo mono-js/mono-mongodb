@@ -7,6 +7,7 @@ export namespace MonoMongo {
 	}
 }
 
+export { ObjectID }
 export let db: Db
 export const oid = (id) => new ObjectID(id)
 
