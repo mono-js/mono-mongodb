@@ -1,4 +1,4 @@
-import { MongoClient, MongoClientOptions, ObjectID, Db } from 'mongodb'
+import { MongoClient, MongoClientOptions, ObjectID, Db, Cursor } from 'mongodb'
 
 export namespace MonoMongo {
 	export interface Options {
@@ -7,7 +7,7 @@ export namespace MonoMongo {
 	}
 }
 
-export { ObjectID }
+export { ObjectID, Cursor }
 export let db: Db
 export const oid = (id) => new ObjectID(id)
 
