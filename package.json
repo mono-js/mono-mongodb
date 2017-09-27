@@ -2,18 +2,15 @@
   "name": "@terrajs/mono-mongodb",
   "version": "1.0.3",
   "description": "MongoDB module for Mono",
-  "main": "dist/src/",
-  "types": "dist/src/index.d.ts",
+  "main": "lib/",
   "files": [
-    "dist/src"
+    "lib"
   ],
   "scripts": {
-    "build": "rimraf dist/ && tsc",
-    "lint": "tslint src/*.ts",
-    "test": "npm run lint && npm run build && nyc ava --verbose --serial dist/test/ && nyc report --reporter=html",
+    "lint": "eslint 'lib/*.js'",
+    "test": "npm run lint && nyc ava --verbose --serial test/ && nyc report --reporter=html",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "preversion": "npm test",
-    "prepublish": "npm run build"
+    "preversion": "npm test"
   },
   "repository": {
     "type": "git",
@@ -21,7 +18,7 @@
   },
   "nyc": {
     "include": [
-      "dist/src/"
+      "lib/"
     ]
   },
   "contributors": [
@@ -34,18 +31,15 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@types/mongodb": "^2.2.9",
     "mongodb": "^2.2.31"
   },
   "devDependencies": {
-    "@types/node": "^8.0.20",
-    "ava": "^0.21.0",
+    "ava": "^0.22.0",
     "codecov": "^2.3.0",
+    "eslint": "^4.7.2",
     "nyc": "^11.1.0",
     "rimraf": "^2.6.1",
-    "std-mocks": "^1.0.1",
-    "tslint": "^5.6.0",
-    "typescript": "^2.4.2"
+    "std-mocks": "^1.0.1"
   },
   "keywords": [
     "mongodb",

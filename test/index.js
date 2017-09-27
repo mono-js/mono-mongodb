@@ -1,17 +1,19 @@
-import test from 'ava'
+const test = require('ava')
 
-import * as stdMock from 'std-mocks'
-import { ObjectID, Db } from 'mongodb'
+const stdMocks = require('std-mocks')
 
-import start, { oid, db } from '../src'
+const { ObjectID, Db } = require('mongodb')
+
+const start = require('../lib')
+const { oid } = require('../lib')
 
 /*
 ** Tests are run in serial
 */
 
 test('db should be undefined when connection not opened', (t) => {
-	t.true(typeof db === 'undefined')
-	t.false(db instanceof Db)
+	t.true(typeof start.db === 'undefined')
+	t.false(start.db instanceof Db)
 })
 
 test('oid should return and ObjectID', (t) => {
@@ -20,7 +22,7 @@ test('oid should return and ObjectID', (t) => {
 })
 
 test('start() should log and error if no mongodb conf defined', async (t) => {
-	stdMock.use()
+	stdMocks.use()
 	const ctx = {
 		conf: {},
 		log: {
@@ -29,16 +31,16 @@ test('start() should log and error if no mongodb conf defined', async (t) => {
 		}
 	}
 	await start.call(ctx)
-	stdMock.restore()
-	const { stdout, stderr } = stdMock.flush()
-	t.false(db instanceof Db)
+	stdMocks.restore()
+	const { stdout, stderr } = stdMocks.flush()
+	t.false(start.db instanceof Db)
 	t.is(stdout.length, 0)
 	t.is(stderr.length, 1)
 	t.true(stderr[0].includes('No mongodb configuration found'))
 })
 
 test('start() should open a mongodb connection', async (t) => {
-	stdMock.use()
+	stdMocks.use()
 	const ctx = {
 		conf: {
 			mongodb: {
@@ -51,9 +53,9 @@ test('start() should open a mongodb connection', async (t) => {
 		}
 	}
 	await start.call(ctx)
-	stdMock.restore()
-	const { stdout, stderr } = stdMock.flush()
-	t.true(db instanceof Db)
+	stdMocks.restore()
+	const { stdout, stderr } = stdMocks.flush()
+	t.true(start.db instanceof Db)
 	t.is(stderr.length, 0)
 	t.is(stdout.length, 2)
 	t.true(stdout[0].includes('Connecting to'))

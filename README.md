@@ -50,10 +50,3 @@ const users = db.collection('users')
 
 users.findOne({ _id: oid('554ab...' }))
 ```
-
-With [TypeScript](https://github.com/Microsoft/TypeScript):
-
-```ts
-import { db, oid } from '@terrajs/mono-mongodb'
-```
-
