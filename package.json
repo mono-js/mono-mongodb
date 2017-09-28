@@ -1,6 +1,6 @@
 {
   "name": "@terrajs/mono-mongodb",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "MongoDB module for Mono",
   "main": "lib/",
   "files": [
