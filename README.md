@@ -39,6 +39,8 @@ module.exports = {
 }
 ```
 
+You can set `mongodb.dropDatabase: true` to drop the database when connected (useful for tests).
+
 ## Usage
 
 In your modules files, you can access `db` instance and `oid(id)` helper like this:

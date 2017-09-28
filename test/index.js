@@ -60,5 +60,35 @@ test('start() should open a mongodb connection', async (t) => {
 	t.is(stdout.length, 2)
 	t.true(stdout[0].includes('Connecting to'))
 	t.true(stdout[1].includes('Connected to'))
+	// Add documents for next test
+	await start.db.collection('users').insertOne({ username: 'TerraJS' })
+})
+
+test('start() should open a mongodb connection and flush the DB', async (t) => {
+	stdMocks.use()
+	const ctx = {
+		conf: {
+			mongodb: {
+				url: 'mongodb://localhost:27017/mono-mongodb',
+				dropDatabase: true
+			}
+		},
+		log: {
+			module: () => ctx.log,
+			info: console.log
+		}
+	}
+	await start.call(ctx)
+	stdMocks.restore()
+	const { stdout, stderr } = stdMocks.flush()
+	t.true(start.db instanceof Db)
+	t.is(stderr.length, 0)
+	t.is(stdout.length, 3)
+	t.true(stdout[0].includes('Connecting to'))
+	t.true(stdout[1].includes('Connected to'))
+	t.true(stdout[2].includes('Dropping mono-mongodb database...'))
+	// Add documents for next test
+	const nbUsers = await start.db.collection('users').count()
+	t.is(nbUsers, 0)
 })
 
