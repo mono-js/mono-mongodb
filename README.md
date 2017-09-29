@@ -29,11 +29,14 @@ Mono-MongoDB will use the `mongodb` property of your configuration (example: `co
 
 ```js
 module.exports = {
-  mongodb: {
-    url: 'mongodb://localhost:27017/my-db',
-    // options property is optional
-    options: {
-      // See http://mongodb.github.io/node-mongodb-native/2.2/api/MongoClient.html#connect
+  mono: {
+    mongodb: {
+      url: 'mongodb://localhost:27017/my-db',
+      dropDatabase: true //Drop database at launch
+      // options property is optional
+      options: {
+        // See http://mongodb.github.io/node-mongodb-native/2.2/api/MongoClient.html#connect
+      }
     }
   }
 }
