@@ -1,6 +1,6 @@
-# mono-mongodb
+<h1 align="center"><img src="https://user-images.githubusercontent.com/904724/31045512-bab71f04-a5e5-11e7-8a9a-f1610301228c.png" width="350" alt="Mono"/></h1>
 
-MongoDB module for [Mono](https://github.com/terrajs/mono).
+> MongoDB module for [Mono](https://github.com/terrajs/mono)
 
 [![npm version](https://img.shields.io/npm/v/@terrajs/mono-mongodb.svg)](https://www.npmjs.com/package/@terrajs/mono-mongodb)
 [![Travis](https://img.shields.io/travis/terrajs/mono-mongodb/master.svg)](https://travis-ci.org/terrajs/mono-mongodb)
