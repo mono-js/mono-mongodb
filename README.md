@@ -1,4 +1,4 @@
-<h1 align="center"><img src="https://user-images.githubusercontent.com/904724/31045512-bab71f04-a5e5-11e7-8a9a-f1610301228c.png" width="350" alt="Mono"/></h1>
+<h1 align="center"><img src="https://user-images.githubusercontent.com/904724/31045645-b07f9efa-a5e8-11e7-920a-5d82282dc166.png" width="350" alt="Mono"/></h1>
 
 > MongoDB module for [Mono](https://github.com/terrajs/mono)
 
