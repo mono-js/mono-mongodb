@@ -1,6 +1,6 @@
 {
   "name": "mono-mongodb",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "MongoDB module for Mono",
   "main": "lib/",
   "files": [
