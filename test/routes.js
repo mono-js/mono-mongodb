@@ -1,7 +1,7 @@
 const test = require('ava')
 const { join } = require('path')
 
-const { start, stop, $post, $get, $put, $delete } = require('@terrajs/mono-test-utils')
+const { start, stop, $post, $get, $put, $delete } = require('mono-test-utils')
 
 let ctx
 let user = {

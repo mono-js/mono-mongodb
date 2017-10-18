@@ -2,7 +2,7 @@
 
 > MongoDB module for [Mono](https://github.com/terrajs/mono)
 
-[![npm version](https://img.shields.io/npm/v/@terrajs/mono-mongodb.svg)](https://www.npmjs.com/package/@terrajs/mono-mongodb)
+[![npm version](https://img.shields.io/npm/v/mono-mongodb.svg)](https://www.npmjs.com/package/mono-mongodb)
 [![Travis](https://img.shields.io/travis/terrajs/mono-mongodb/master.svg)](https://travis-ci.org/terrajs/mono-mongodb)
 [![Coverage](https://img.shields.io/codecov/c/github/terrajs/mono-mongodb/master.svg)](https://codecov.io/gh/terrajs/mono-mongodb.js)
 [![license](https://img.shields.io/github/license/terrajs/mono-mongodb.svg)](https://github.com/terrajs/mono-mongodb/blob/master/LICENSE)
@@ -10,7 +10,7 @@
 ## Installation
 
 ```bash
-npm install --save @terrajs/mono-mongodb
+npm install --save mono-mongodb
 ```
 
 Then, in your configuration file of your Mono application (example: `conf/application.js`):
@@ -18,7 +18,7 @@ Then, in your configuration file of your Mono application (example: `conf/applic
 ```js
 module.exports = {
   mono: {
-    modules: ['@terrajs/mono-mongodb']
+    modules: ['mono-mongodb']
   }
 }
 ```
@@ -31,9 +31,14 @@ Mono-MongoDB will use the `mongodb` property of your configuration (example: `co
 module.exports = {
   mono: {
     mongodb: {
+      // url is required
       url: 'mongodb://localhost:27017/my-db',
-      dropDatabase: true //Drop database at launch
-      // options property is optional
+      // Drop database at launch (default: false)
+      dropDatabase: true,
+      // Used in utils find
+      findLimitDefault: 20, // default value
+      findLimitMax: 100, // default value
+      // options property for node mongodb driver
       options: {
         // See http://mongodb.github.io/node-mongodb-native/2.2/api/MongoClient.html#connect
       }
@@ -46,12 +51,27 @@ You can set `mongodb.dropDatabase: true` to drop the database when connected (us
 
 ## Usage
 
-In your modules files, you can access `db` instance and `oid(id)` helper like this:
+In your modules files, you can access `db` instance like this:
 
 ```js
-const { db, oid } = require('@terrajs/mono-mongodb')
+const { db, oid } = require('mono-mongodb')
 
-const users = db.collection('users')
+const collection = db.collection('users')
 
-users.findOne({ _id: oid('554ab...' }))
+collection.findOne({ _id: oid('554ab...' }))
 ```
+
+## Utils
+
+```js
+const { oid, findValidation, getFindOptions, FindStream } = require('mono-mongodb')
+```
+
+- `oid(id: string): ObjectID`
+- `findValidation: Object`: Joi object used for route validation inside Mono
+- `getFindOptions(req.query): Object`: Method to transform `req.query` into a compatible object for MongoDB `find`
+- `new FindStream({ total, limit, offset, res?, key = 'items' }): TransformStream`: Used for streaming MongoDB find cursor back to the server response
+
+The last 3 methods are useful to create easily listing routes with pagination, sorting and fields restriction, best used in combination with [mongodb-utils find()](https://github.com/terrajs/mongodb-utils#find).
+
+You can see an example of how to use it in `test/fixtures/utils/src/utils.routes.js`.

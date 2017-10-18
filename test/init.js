@@ -1,12 +1,11 @@
 const test = require('ava')
 const { join } = require('path')
 
-const { start, stop } = require('@terrajs/mono-test-utils')
+const { start, stop } = require('mono-test-utils')
 
 const { ObjectID, Db } = require('mongodb')
 
 const mongoModule = require('../lib')
-const { oid } = require('../lib')
 
 /*
 ** Tests are run in serial
@@ -17,24 +16,21 @@ test('db should be undefined when connection not opened', (t) => {
 	t.false(mongoModule.db instanceof Db)
 })
 
-test('oid should return and ObjectID', (t) => {
-	const id = oid('123456789012345678901234')
-	t.true(id instanceof ObjectID)
+test('start() should throw an error if no mono.mongodb conf defined', async (t) => {
+	const error = await t.throws(start(join(__dirname, 'fixtures/ko/'), Error))
+
+	t.true(error.message.includes('No `mono.mongodb` configuration found'))
 })
 
-test('start() should log and error if no mongodb conf defined', async (t) => {
-	const ctx = await start(join(__dirname, 'fixtures/ko/'))
-
-	t.false(mongoModule.db instanceof Db)
-	t.is(ctx.stderr.length, 1)
-	t.true(ctx.stderr.join().includes('No mongodb configuration found'))
-	await stop(ctx.server)
-})
-
-test('start() should open a mongodb connection', async (t) => {
+test('start() should open a mongodb connection and give utils', async (t) => {
 	const ctx = await start(join(__dirname, 'fixtures/ok/'))
 
 	t.true(mongoModule.db instanceof Db)
+	t.truthy(mongoModule.oid)
+	t.true(mongoModule.oid('123456789012345678901234') instanceof ObjectID)
+	t.truthy(mongoModule.findValidation)
+	t.truthy(mongoModule.getFindOptions)
+	t.truthy(mongoModule.FindStream)
 	t.is(ctx.stderr.length, 0)
 	t.true(ctx.stdout.join().includes('Connecting to'))
 	t.true(ctx.stdout.join().includes('Connected to'))
