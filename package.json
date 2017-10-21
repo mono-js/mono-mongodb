@@ -27,15 +27,18 @@
     },
     {
       "name": "Benjamin Canac (@benjamincanac)"
+    },
+    {
+      "name": "Gaetan SENN (@gaetansenn)"
     }
   ],
   "license": "MIT",
   "dependencies": {
-    "joi": "^13.0.0",
+    "joi": "^13.0.1",
     "mongodb": "^2.2.33"
   },
   "devDependencies": {
-    "@terrajs/mono": "^0.4.11",
+    "@terrajs/mono": "^0.6.0",
     "ava": "^0.22.0",
     "codecov": "^2.3.1",
     "eslint": "^4.9.0",

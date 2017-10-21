@@ -1,6 +1,6 @@
 const Joi = require('joi')
 const mongoUtils = require('mongodb-utils')
-const { db, oid, findValidation, getFindOptions, FindStream } = require('../../../..')
+const { db, findValidation, getFindOptions, FindStream } = require('../../../..')
 
 const collection = mongoUtils(db.collection('docs'))
 
