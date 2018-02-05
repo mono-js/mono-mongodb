@@ -18,8 +18,8 @@ test('GET /options', async (t) => {
 	t.deepEqual(body.sort, {})
 })
 
-test('GET /options?limit=3&offset=2&sortBy=foo:desc,bar:asc,baz&fields=foo,bar', async (t) => {
-	const { body } = await $get(`/options?limit=3&offset=2&sortBy=foo:desc,bar:asc,baz&fields=foo,bar`)
+test('GET /options?limit=3&offset=2&sort=foo:desc,bar:asc,baz&fields=foo,bar', async (t) => {
+	const { body } = await $get(`/options?limit=3&offset=2&sort=foo:desc,bar:asc,baz&fields=foo,bar`)
 
 	t.is(body.limit, 3)
 	t.is(body.offset, 2)
