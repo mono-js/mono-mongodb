@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@terrajs/mono": "0.9.1",
-    "ava": "0.22.0",
+    "ava": "0.25.0",
     "codecov": "2.3.1",
     "eslint": "4.9.0",
     "mongodb-utils": "1.1.2",
