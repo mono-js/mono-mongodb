@@ -44,7 +44,7 @@
     "eslint": "4.9.0",
     "mongodb-utils": "1.1.2",
     "mono-test-utils": "1.0.4",
-    "nyc": "11.2.1",
+    "nyc": "11.6.0",
     "rimraf": "2.6.2",
     "std-mocks": "1.0.1"
   },
