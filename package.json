@@ -42,7 +42,7 @@
     "ava": "0.22.0",
     "codecov": "2.3.1",
     "eslint": "4.9.0",
-    "mongodb-utils": "1.1.2",
+    "mongodb-utils": "1.1.6",
     "mono-test-utils": "1.0.4",
     "nyc": "11.2.1",
     "rimraf": "2.6.2",
