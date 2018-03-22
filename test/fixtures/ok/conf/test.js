@@ -6,7 +6,7 @@ module.exports = {
 			join(__dirname, '../../../..')
 		],
 		mongodb: {
-			url: 'mongodb://localhost:27017/mono-mongodb',
+			url: 'mongodb://localhost:27017',
 			dbName: 'mono-mongodb',
 			dropDatabase: true
 		}

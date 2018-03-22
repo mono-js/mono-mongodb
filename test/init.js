@@ -17,9 +17,21 @@ test('db should be undefined when connection not opened', (t) => {
 })
 
 test('start() should throw an error if no mono.mongodb conf defined', async (t) => {
-	const error = await t.throws(start(join(__dirname, 'fixtures/ko/'), Error))
+	const error = await t.throws(start(join(__dirname, 'fixtures/ko/')))
 
 	t.true(error.message.includes('No `mono.mongodb` configuration found'))
+})
+
+test('start() should throw an error if no mono.mongodb.url conf defined', async (t) => {
+	const error = await t.throws(start(join(__dirname, 'fixtures/ko/'), { env: 'no-url' }))
+
+	t.true(error.message.includes('No `mono.mongodb.url` configuration found'))
+})
+
+test('start() should throw an error if no mono.mongodb.url conf defined', async (t) => {
+	const error = await t.throws(start(join(__dirname, 'fixtures/ko/'), { env: 'no-dbname' }))
+
+	t.true(error.message.includes('No `mono.mongodb.dbName` configuration found'))
 })
 
 test('start() should open a mongodb connection and give utils', async (t) => {
