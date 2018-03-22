@@ -32,7 +32,8 @@ module.exports = {
   mono: {
     mongodb: {
       // url is required
-      url: 'mongodb://localhost:27017/my-db',
+      url: 'mongodb://localhost:27017',
+      dbName: 'my-db',
       // Drop database at launch (default: false)
       dropDatabase: true,
       // Used in utils find
